@@ -1,9 +1,9 @@
+import { Header } from "@/components/Header";
+
 function App() {
   return (
     <>
-      <header>
-        <h1>Restaurants</h1>
-      </header>
+      <Header />
     </>
   );
 }
