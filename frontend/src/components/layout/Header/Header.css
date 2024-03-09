@@ -1,9 +1,15 @@
 .header {
   display: flex;
-  padding: 1rem 1.5rem;
+  padding: 1rem;
 }
 
 .header-title {
   font-size: 1.5rem;
   font-weight: 500;
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    padding: 1rem 2rem;
+  }
 }
