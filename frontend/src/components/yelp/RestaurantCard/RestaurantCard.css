@@ -5,7 +5,20 @@
   min-width: 0;
   width: 100%;
   padding-bottom: 1rem;
+  color: var(--text-color);
   border-bottom: 2px solid var(--border-color);
+}
+
+.restaurant-card:hover {
+  background-color: var(--border-color);
+}
+
+.overlay-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .restaurant-image {
@@ -109,5 +122,9 @@
     margin-top: 0.5rem;
     padding: 0.5rem 1rem 0;
     border-top: 1px solid var(--border-color);
+  }
+
+  .restaurant-card:hover .restaurant-info-container {
+    border-color: var(--border-accent-color);
   }
 }

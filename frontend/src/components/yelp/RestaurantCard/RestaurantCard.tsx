@@ -10,6 +10,7 @@ export const RestaurantCard = ({ restaurant }: RestaurantCardProps) => {
 
   return (
     <article className="restaurant-card">
+      <a href={url} target="_blank" className="overlay-link" />
       <img className="restaurant-image" src={image_url} alt={name} />
       <div className="restaurant-details">
         <h1 className="restaurant-name">{name}</h1>
