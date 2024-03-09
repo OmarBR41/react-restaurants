@@ -1,3 +1,4 @@
+import { LoadingDots } from "@/components/ui/LoadingDots";
 import { useObserver } from "@/hooks/useObserver";
 import {
   BACKEND_API_URL,
@@ -125,6 +126,7 @@ export const YelpBusinesses = () => {
           observerRef={measureRef}
         />
       )}
+      {isLoading && businesses.length > 0 && <LoadingDots />}
     </main>
   );
 };
