@@ -1,4 +1,6 @@
 import { LoadingDots } from "@/components/ui/LoadingDots";
+import { SkeletonGrid } from "@/components/ui/SkeletonGrid";
+import { SkeletonList } from "@/components/ui/SkeletonList";
 import { useObserver } from "@/hooks/useObserver";
 import {
   BACKEND_API_URL,
@@ -109,17 +111,20 @@ export const YelpBusinesses = () => {
     }
   };
 
+  const isInitialLoad = isLoading && businesses.length === 0;
+
   return (
     <main className="yelp-businesses">
-      {isLoading && <p>Loading</p>}
       {!isLoading && !businesses && <p>No businesses found</p>}
-      {categories && (
+      {isLoading && categories.length === 0 && <SkeletonList />}
+      {categories.length > 0 && (
         <CategoriesList
           categories={categories}
           selectedCategory={selectedCategory}
           handleFilter={filterByCategory}
         />
       )}
+      {isInitialLoad && <SkeletonGrid />}
       {businesses && (
         <RestaurantsGrid
           restaurants={filteredBusinesses}

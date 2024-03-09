@@ -1,0 +1,11 @@
+.skeleton-list {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 2px;
+  margin-bottom: 1rem;
+}
+
+.skeleton-line--pill {
+  flex: 1;
+  height: 2.75rem;
+}

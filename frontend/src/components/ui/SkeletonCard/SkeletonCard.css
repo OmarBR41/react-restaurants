@@ -1,0 +1,127 @@
+.skeleton-card {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  min-width: 0;
+  width: 100%;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.skeleton-image {
+  aspect-ratio: 1;
+  width: max(25%, 100px);
+  background: var(--border-color);
+  background: linear-gradient(
+    to right,
+    var(--border-color) 8%,
+    var(--accent-color) 18%,
+    var(--border-color) 33%
+  );
+  background-size: 800px 100px;
+  -webkit-animation: wave 2s infinite ease-out;
+  animation: wave 2s infinite ease-out;
+}
+
+.skeleton-details {
+  min-width: 0;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.skeleton-info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.skeleton-line {
+  width: 80px;
+  height: 0.85rem;
+  margin-bottom: 0.4rem;
+  border-radius: var(--border-radius);
+  background: var(--border-color);
+  background: linear-gradient(
+    to right,
+    var(--border-color) 8%,
+    var(--accent-color) 18%,
+    var(--border-color) 33%
+  );
+  background-size: 800px 100px;
+  -webkit-animation: wave 2s infinite ease-out;
+  animation: wave 2s infinite ease-out;
+}
+.skeleton-line--large {
+  width: 200px;
+  height: 1rem;
+}
+.skeleton-line--small {
+  width: 25px;
+}
+
+.skeleton-button {
+  width: max(20%, 100px);
+  margin-top: auto;
+  padding: 0.5rem 2.5rem;
+  border-radius: var(--border-radius);
+  background-color: var(--border-color);
+}
+
+@media screen and (min-width: 640px) {
+  .skeleton-card {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 1rem 2rem;
+    border-bottom: none;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+  }
+
+  .skeleton-details {
+    align-items: center;
+  }
+
+  .skeleton-button {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    height: 1.75rem;
+    width: max(45%, 150px);
+    text-align: center;
+    transform: translate(-50%, -50%);
+  }
+
+  .skeleton-info-container {
+    width: 80%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem 0;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .skeleton-card:hover .skeleton-info-container {
+    border-color: var(--border-accent-color);
+  }
+}
+
+@-webkit-keyframes wave {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+@keyframes wave {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
