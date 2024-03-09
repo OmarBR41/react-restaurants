@@ -115,7 +115,7 @@ export const YelpBusinesses = () => {
 
   return (
     <main className="yelp-businesses">
-      {!isLoading && !businesses && <p>No businesses found</p>}
+      {!isLoading && businesses.length === 0 && <p>No businesses found</p>}
       {isLoading && categories.length === 0 && <SkeletonList />}
       {categories.length > 0 && (
         <CategoriesList
