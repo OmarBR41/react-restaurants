@@ -8,6 +8,9 @@
   --secondary-color: #f5b689;
   --star-color: #f4b840;
 
+  --border-radius: 0.5rem;
+  --box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.2), 0 1px 2px -1px rgb(0 0 0 / 0.2);
+
   font-family: "Montserrat", Inter, system-ui, Avenir, Helvetica, Arial,
     sans-serif;
   line-height: 1.5;

@@ -5,6 +5,7 @@ import {
 } from "@/lib/constants";
 import { Business } from "@/types";
 import { useCallback, useEffect, useState } from "react";
+import { RestaurantsGrid } from "../RestaurantsGrid";
 import "./YelpBusinesses.css";
 
 export const YelpBusinesses = () => {
@@ -44,7 +45,7 @@ export const YelpBusinesses = () => {
     <main className="yelp-businesses">
       {isLoading && <p>Loading</p>}
       {!isLoading && !businesses && <p>No businesses found</p>}
-      {businesses && <pre>{JSON.stringify(businesses, undefined, 4)}</pre>}
+      {businesses && <RestaurantsGrid restaurants={businesses} />}
     </main>
   );
 };

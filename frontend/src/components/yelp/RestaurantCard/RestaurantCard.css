@@ -1,0 +1,113 @@
+.restaurant-card {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  min-width: 0;
+  width: 100%;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.restaurant-image {
+  aspect-ratio: 1;
+  width: max(25%, 100px);
+}
+
+.restaurant-details {
+  min-width: 0;
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.restaurant-name {
+  width: 100%;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.restaurant-info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.restaurant-rating {
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.restaurant-price {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.restaurant-button {
+  margin-top: auto;
+  padding: 0.5rem 1.25rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: var(--border-radius);
+  color: var(--bg-color);
+  background: linear-gradient(
+    0.25turn,
+    var(--primary-color),
+    var(--secondary-color)
+  );
+  cursor: pointer;
+}
+
+.restaurant-button:hover {
+  color: var(--bg-color);
+  background: linear-gradient(
+    0.25turn,
+    var(--primary-accent-color),
+    var(--secondary-color)
+  );
+}
+
+.restaurant-button:focus,
+.restaurant-button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media screen and (min-width: 640px) {
+  .restaurant-card {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 1rem 2rem;
+    border-bottom: none;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+  }
+
+  .restaurant-details {
+    align-items: center;
+  }
+
+  .restaurant-name {
+    text-align: center;
+  }
+
+  .restaurant-button {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: max(45%, 150px);
+    text-align: center;
+    transform: translate(-50%, -50%);
+  }
+
+  .restaurant-info-container {
+    width: 80%;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem 0;
+    border-top: 1px solid var(--border-color);
+  }
+}

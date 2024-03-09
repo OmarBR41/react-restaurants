@@ -1,0 +1,23 @@
+.restaurants-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+@media screen and (min-width: 640px) {
+  .restaurants-grid {
+    row-gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .restaurants-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .restaurants-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
