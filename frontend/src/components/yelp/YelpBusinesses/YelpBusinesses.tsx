@@ -1,3 +1,4 @@
+import { useObserver } from "@/hooks/useObserver";
 import {
   BACKEND_API_URL,
   DEFAULT_LIMIT,
@@ -14,6 +15,7 @@ export const YelpBusinesses = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [limit] = useState(DEFAULT_LIMIT);
   const [offset, setOffset] = useState(DEFAULT_OFFSET);
+  const [hasMore, setHasMore] = useState(false);
 
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(
@@ -21,35 +23,54 @@ export const YelpBusinesses = () => {
   );
   const [filteredBusinesses, setFilteredBusinesses] = useState<Business[]>([]);
 
-  const fetchData = useCallback(async () => {
-    setIsLoading(true);
-
-    try {
-      const url = new URL(`${BACKEND_API_URL}/businesses`);
-      url.searchParams.append("limit", String(limit));
-      url.searchParams.append("offset", String(offset));
-
-      const res = await fetch(url);
-      const data = await res.json();
-      setOffset((prevOffset) => prevOffset + limit);
-
-      return data;
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setIsLoading(false);
-    }
-  }, [limit, offset]);
-
-  const handleFetch = useCallback(async () => {
-    const data = await fetchData();
-    const newData: Business[] = data?.businesses ?? [];
-
-    setBusinesses((prevData) => [...prevData, ...newData]);
-  }, [fetchData]);
+  const { measureRef, isIntersecting, observer } = useObserver({
+    threshold: 0.85,
+  });
 
   useEffect(() => {
-    handleFetch();
+    const abortController = new AbortController();
+
+    if (isIntersecting && hasMore) {
+      fetchData(abortController.signal);
+      observer?.disconnect();
+    }
+    return () => {
+      abortController.abort();
+    };
+  }, [isIntersecting, hasMore]);
+
+  const fetchData = useCallback(
+    async (signal?: AbortSignal) => {
+      setIsLoading(true);
+
+      try {
+        const url = new URL(`${BACKEND_API_URL}/businesses`);
+        url.searchParams.append("limit", String(limit));
+        url.searchParams.append("offset", String(offset));
+
+        const res = await fetch(url, { signal });
+        const data = await res.json();
+        const newData: Business[] = data?.businesses ?? [];
+
+        setOffset((prevOffset) => prevOffset + limit);
+        setBusinesses((prevData) => [...prevData, ...newData]);
+        setHasMore(data?.total > businesses.length);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [limit, offset]
+  );
+
+  useEffect(() => {
+    const abortController = new AbortController();
+    fetchData(abortController.signal);
+
+    return () => {
+      abortController.abort();
+    };
   }, []);
 
   useEffect(() => {
@@ -98,7 +119,12 @@ export const YelpBusinesses = () => {
           handleFilter={filterByCategory}
         />
       )}
-      {businesses && <RestaurantsGrid restaurants={filteredBusinesses} />}
+      {businesses && (
+        <RestaurantsGrid
+          restaurants={filteredBusinesses}
+          observerRef={measureRef}
+        />
+      )}
     </main>
   );
 };

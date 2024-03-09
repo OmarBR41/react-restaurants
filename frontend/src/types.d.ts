@@ -1,3 +1,11 @@
+export type BusinessAPIResponse = {
+  businesses: Business[];
+  total: number;
+  region: {
+    center: Coordinates;
+  };
+};
+
 export type Business = {
   id: string;
   alias: string;
