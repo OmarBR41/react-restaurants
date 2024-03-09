@@ -25,6 +25,7 @@ export const RestaurantsGrid = ({
           (!isMobile && i === restaurants.length - 3);
         return (
           <RestaurantCard
+            key={r.id}
             restaurant={r}
             observerRef={shouldSetObserver ? observerRef : () => {}}
           />

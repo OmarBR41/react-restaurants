@@ -21,9 +21,10 @@ export const BusinessRating = ({ id, rating }: BusinessRatingProps) => {
           : isStarFilled
           ? "100%"
           : partialStarPercentage;
+        const starId = `${id}-star-${i}`;
 
         return (
-          <RatingStar id={`${id}-star-${i}`} percentageFilled={percentage} />
+          <RatingStar key={starId} id={starId} percentageFilled={percentage} />
         );
       })}
     </div>

@@ -12,10 +12,10 @@ export const RatingStar = ({ id, percentageFilled }: StarProps) => (
   >
     <defs>
       <linearGradient id={`fill-${id}`}>
-        <stop offset="0%" stop-color="#f4b840" />
-        <stop offset={percentageFilled} stop-color="#f4b540" />
-        <stop offset={percentageFilled} stop-color="#fff" />
-        <stop offset="100%" stop-color="#fff" />
+        <stop offset="0%" stopColor="#f4b840" />
+        <stop offset={percentageFilled} stopColor="#f4b540" />
+        <stop offset={percentageFilled} stopColor="#fff" />
+        <stop offset="100%" stopColor="#fff" />
       </linearGradient>
     </defs>
     <g
