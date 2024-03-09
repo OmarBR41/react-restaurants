@@ -1,9 +1,13 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
 import { createServer } from "http";
 
 import { PORT } from "./lib/constants";
+import businessesRoutes from "./routes/businesses.routes";
 
 export const server = async () => {
   const app = express();
@@ -22,6 +26,8 @@ export const server = async () => {
       ok: true,
     });
   });
+
+  app.use("/api/v1/businesses", businessesRoutes);
 
   const server = createServer(app);
   server.listen(app.get("port"), () =>
