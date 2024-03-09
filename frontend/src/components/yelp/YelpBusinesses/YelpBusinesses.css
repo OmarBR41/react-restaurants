@@ -1,0 +1,9 @@
+.yelp-businesses {
+  padding: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .yelp-businesses {
+    padding: 1rem 2rem;
+  }
+}
