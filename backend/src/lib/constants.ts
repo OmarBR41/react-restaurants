@@ -8,3 +8,5 @@ export const YELP_API_KEY = process.env.YELP_API_KEY || "";
 
 export const DEFAULT_LIMIT = 20;
 export const DEFAULT_OFFSET = 0;
+
+export const ALLOWED_DOMAINS = process.env.ALLOWED_DOMAINS?.split(",") || [];

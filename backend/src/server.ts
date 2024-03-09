@@ -7,6 +7,7 @@ import express from "express";
 import { createServer } from "http";
 
 import { PORT } from "./lib/constants";
+import { corsConfig } from "./lib/corsConfig";
 import businessesRoutes from "./routes/businesses.routes";
 
 export const server = async () => {
@@ -19,7 +20,7 @@ export const server = async () => {
     })
   );
   app.use(bodyParser.json());
-  app.use(cors());
+  app.use(cors(corsConfig));
 
   app.get("/healthcheck", (_, res) => {
     res.status(200).send({
