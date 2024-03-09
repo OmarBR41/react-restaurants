@@ -1,4 +1,5 @@
 import { Business } from "@/types";
+import { BusinessRating } from "../BusinessRating";
 import "./RestaurantCard.css";
 
 type RestaurantCardProps = {
@@ -16,7 +17,7 @@ export const RestaurantCard = ({ restaurant }: RestaurantCardProps) => {
         <h1 className="restaurant-name">{name}</h1>
 
         <div className="restaurant-info-container">
-          <div className="restaurant-rating">{rating}</div>
+          <BusinessRating id={restaurant.alias} rating={rating} />
           <span className="restaurant-price">{price ?? "$"}</span>
         </div>
 

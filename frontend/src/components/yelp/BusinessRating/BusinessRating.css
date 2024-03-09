@@ -1,0 +1,15 @@
+.ratings {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.filled-area {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--star-color);
+  white-space: nowrap;
+  overflow: hidden;
+}
