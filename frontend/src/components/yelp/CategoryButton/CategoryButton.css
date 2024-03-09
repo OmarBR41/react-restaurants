@@ -1,0 +1,12 @@
+.category-button {
+  border: none;
+  white-space: nowrap;
+  background-color: var(--border-color);
+  box-shadow: var(--box-shadow);
+}
+
+.category-button--selected,
+.category-button:hover {
+  background-color: var(--bg-color);
+  outline: 4px auto var(--primary-color);
+}
